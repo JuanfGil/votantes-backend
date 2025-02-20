@@ -88,7 +88,7 @@ app.get('/mis-registros', async (req, res) => {
 
 
 // 🔹 Ruta para obtener TODOS los registros (Solo Admin)
-const ADMIN_PASSWORD = "admin123"; // Cambia esta contraseña por una segura
+const ADMIN_PASSWORD = "geo2025"; // Cambia esta contraseña por una segura
 
 app.get('/admin/registros', async (req, res) => {
     const { password } = req.query;
