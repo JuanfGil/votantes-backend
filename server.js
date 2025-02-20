@@ -77,7 +77,7 @@ app.get('/mis-registros', async (req, res) => {
     }
 
     try {
-        const result = await pool.query('SELECT * FROM votantes WHERE userId = $1 ORDER BY fecha DESC', [userId]);
+        const result = await pool.query('SELECT * FROM votantes WHERE "userId" = $1 ORDER BY fecha DESC', [userId]);
         console.log("📊 Registros encontrados:", result.rows.length);
         res.json(result.rows);
     } catch (error) {
