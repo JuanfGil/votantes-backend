@@ -106,48 +106,8 @@ app.get('/admin/registros', async (req, res) => {
     }
 });
 
-// 🔹 Ruta para actualizar un votante existente
-app.put('/actualizar', async (req, res) => {
-    try {
-        const {
-            cedula, nombre, telefono, municipio, direccion,
-            barrio, genero, edad, profesion, lider, tipoLider,
-            nota, userId
-        } = req.body;
-
-        const result = await pool.query(
-            `UPDATE votantes SET 
-                nombre = $1,
-                telefono = $2,
-                municipio = $3,
-                direccion = $4,
-                barrio = $5,
-                genero = $6,
-                edad = $7,
-                profesion = $8,
-                lider = $9,
-                tipoLider = $10,
-                nota = $11,
-                "userId" = $12
-             WHERE cedula = $13
-             RETURNING *`,
-            [nombre, telefono, municipio, direccion, barrio, genero, edad, profesion, lider, tipoLider, nota, userId, cedula]
-        );
-
-        if (result.rowCount === 0) {
-            return res.status(404).json({ success: false, error: "Votante no encontrado" });
-        }
-
-        res.json({ success: true, data: result.rows[0] });
-
-    } catch (error) {
-        console.error("❌ Error al actualizar el votante:", error);
-        res.status(500).json({ success: false, error: 'Error al actualizar el votante' });
-    }
-});
-
 // Iniciar servidor
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor corriendo en el puerto ${PORT}`);
+    console.log(🚀 Servidor corriendo en el puerto ${PORT});
 });
