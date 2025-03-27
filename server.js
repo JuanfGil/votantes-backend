@@ -15,7 +15,7 @@ const pool = new Pool({
 
 // 🔹 Función para crear la tabla automáticamente si no existe
 async function createTable() {
-    const query = `
+    const query = 
         CREATE TABLE IF NOT EXISTS votantes (
             id SERIAL PRIMARY KEY,
             cedula VARCHAR(20) UNIQUE NOT NULL,
@@ -33,7 +33,7 @@ async function createTable() {
             userId VARCHAR(50),  -- Nuevo campo para identificar a cada usuario
             fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
-    `;
+    ;
 
     try {
         await pool.query(query);
